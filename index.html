@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chuck Norris Jokes</title>
+
+    <style>
+        
+        div {
+            padding: 20px;
+            margin: 20px;
+        }
+
+        #joke {
+            background-color: #e6dddc;
+        }
+
+
+    </style>
+
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const button = document.querySelector('#button')
+            const joke = document.querySelector('#joke')
+
+            button.onclick = function() {
+
+                fetch('http://api.icndb.com/jokes/random')
+                .then(response => response.json())
+                .then(data => {
+                    joke.innerHTML = data.value.joke
+                })
+
+            }
+
+            
+
+        })
+
+
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Chuck Norris Joke Generator</h1>
+        <button id="button">Generate Joke</button>
+        <div id="joke"></div>
+    </div>
+
+</body>
+</html>
